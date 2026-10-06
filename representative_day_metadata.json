@@ -1,0 +1,9 @@
+{
+  "selection_rule": "minimum standardized distance to median daily load and PV energy",
+  "candidate_days": 365,
+  "selected_seed": 20279,
+  "daily_load_kwh": 3218.525497201706,
+  "daily_pv_kwh": 906.0969902390464,
+  "initial_soc_percent": 65.99448185618847,
+  "final_soc_percent": 20.0
+}

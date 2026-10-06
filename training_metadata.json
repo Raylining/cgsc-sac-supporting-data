@@ -1,0 +1,18 @@
+{
+  "training_seeds": [
+    42,
+    142,
+    242
+  ],
+  "episodes_per_seed": 500,
+  "steps_per_episode": 24,
+  "rolling_window": 20,
+  "uncertainty_band": "sample standard deviation across independently trained seeds",
+  "lagrangian_baseline": {
+    "constraint_cost": "episode mean absolute safety correction normalized by action scale",
+    "constraint_budget": 0.05,
+    "initial_lambda": 0.1,
+    "dual_learning_rate": 0.05,
+    "max_lambda": 5.0
+  }
+}

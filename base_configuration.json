@@ -1,0 +1,102 @@
+{
+  "episodes": 500,
+  "steps_per_episode": 24,
+  "rolling_window": 20,
+  "comparison_rolling_window": 20,
+  "environment": {
+    "time_step_hours": 1.0,
+    "battery_capacity_kwh": 300.0,
+    "battery_max_charge_kw": 100.0,
+    "battery_max_discharge_kw": 100.0,
+    "battery_min_soc": 0.2,
+    "battery_max_soc": 0.8,
+    "battery_charge_efficiency": 0.95,
+    "battery_discharge_efficiency": 0.95,
+    "initial_soc_low": 0.3,
+    "initial_soc_high": 0.7,
+    "grid_import_limit_kw": 260.0,
+    "grid_export_limit_kw": 160.0,
+    "pv_capacity_kw": 180.0,
+    "base_load_kw": 115.0,
+    "sell_price_per_kwh": 0.06,
+    "battery_throughput_cost_per_kwh": 0.012,
+    "correction_penalty_per_kw": 0.1,
+    "terminal_energy_penalty_per_kwh": 0.1,
+    "reward_scale": 10.0,
+    "constraint_tolerance": 1e-06,
+    "training_scenarios": {
+      "load_forecast_error_std_low": 0.05,
+      "load_forecast_error_std_high": 0.18,
+      "pv_forecast_error_std_low": 0.08,
+      "pv_forecast_error_std_high": 0.25,
+      "daily_load_scale_low": 0.8,
+      "daily_load_scale_high": 1.35,
+      "daily_pv_scale_low": 0.25,
+      "daily_pv_scale_high": 1.0,
+      "stress_event_probability": 0.8,
+      "stress_start_hours": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "stress_duration_low_hours": 2,
+      "stress_duration_high_hours": 5,
+      "stress_load_multiplier_low": 1.15,
+      "stress_load_multiplier_high": 1.55,
+      "stress_pv_multiplier_low": 0.1,
+      "stress_pv_multiplier_high": 0.55,
+      "battery_capacity_low_kwh": 285.0,
+      "battery_capacity_high_kwh": 300.0,
+      "soc_observation_noise_std": 0.005,
+      "normal_peak_grid_import_limit_kw": 190.0,
+      "peak_grid_hours": [
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "stress_grid_import_limit_low_kw": 105.0,
+      "stress_grid_import_limit_high_kw": 165.0,
+      "load_shedding_cost_per_kwh": 3.0
+    }
+  },
+  "sac": {
+    "learning_rate": 0.0003,
+    "buffer_size": 50000,
+    "learning_starts": 500,
+    "batch_size": 128,
+    "tau": 0.005,
+    "gamma": 0.99,
+    "train_freq": 1,
+    "gradient_steps": 1,
+    "net_arch": [
+      128,
+      128
+    ]
+  },
+  "correction_aware_sac": {
+    "lambda_corr": 1.0
+  },
+  "ppo": {
+    "learning_rate": 0.0003,
+    "batch_size": 24,
+    "n_epochs": 10,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_range": 0.2,
+    "ent_coef": 0.0,
+    "net_arch": [
+      128,
+      128
+    ]
+  },
+  "training_seeds": [
+    42,
+    142,
+    242
+  ]
+}
